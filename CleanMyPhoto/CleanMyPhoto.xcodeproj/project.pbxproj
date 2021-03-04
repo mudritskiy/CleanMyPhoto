@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE82F96B25EED45F00CE0129 /* CleanMyPhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */; };
+		FE82F96D25EED45F00CE0129 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F96C25EED45F00CE0129 /* ContentView.swift */; };
+		FE82F96F25EED46200CE0129 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE82F96E25EED46200CE0129 /* Assets.xcassets */; };
+		FE82F97225EED46200CE0129 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE82F97125EED46200CE0129 /* Preview Assets.xcassets */; };
+		FE82F97D25EED46200CE0129 /* CleanMyPhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F97C25EED46200CE0129 /* CleanMyPhotoTests.swift */; };
+		FE82F98825EED46200CE0129 /* CleanMyPhotoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F98725EED46200CE0129 /* CleanMyPhotoUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE82F97925EED46200CE0129 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE82F95F25EED45F00CE0129 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE82F96625EED45F00CE0129;
+			remoteInfo = CleanMyPhoto;
+		};
+		FE82F98425EED46200CE0129 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE82F95F25EED45F00CE0129 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE82F96625EED45F00CE0129;
+			remoteInfo = CleanMyPhoto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FE82F96725EED45F00CE0129 /* CleanMyPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanMyPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMyPhotoApp.swift; sourceTree = "<group>"; };
+		FE82F96C25EED45F00CE0129 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FE82F96E25EED46200CE0129 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE82F97125EED46200CE0129 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FE82F97325EED46200CE0129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE82F97825EED46200CE0129 /* CleanMyPhotoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanMyPhotoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE82F97C25EED46200CE0129 /* CleanMyPhotoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMyPhotoTests.swift; sourceTree = "<group>"; };
+		FE82F97E25EED46200CE0129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE82F98325EED46200CE0129 /* CleanMyPhotoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanMyPhotoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE82F98725EED46200CE0129 /* CleanMyPhotoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMyPhotoUITests.swift; sourceTree = "<group>"; };
+		FE82F98925EED46200CE0129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE82F96425EED45F00CE0129 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE82F97525EED46200CE0129 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE82F98025EED46200CE0129 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE82F95E25EED45F00CE0129 = {
+			isa = PBXGroup;
+			children = (
+				FE82F96925EED45F00CE0129 /* CleanMyPhoto */,
+				FE82F97B25EED46200CE0129 /* CleanMyPhotoTests */,
+				FE82F98625EED46200CE0129 /* CleanMyPhotoUITests */,
+				FE82F96825EED45F00CE0129 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE82F96825EED45F00CE0129 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE82F96725EED45F00CE0129 /* CleanMyPhoto.app */,
+				FE82F97825EED46200CE0129 /* CleanMyPhotoTests.xctest */,
+				FE82F98325EED46200CE0129 /* CleanMyPhotoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE82F96925EED45F00CE0129 /* CleanMyPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */,
+				FE82F96C25EED45F00CE0129 /* ContentView.swift */,
+				FE82F96E25EED46200CE0129 /* Assets.xcassets */,
+				FE82F97325EED46200CE0129 /* Info.plist */,
+				FE82F97025EED46200CE0129 /* Preview Content */,
+			);
+			path = CleanMyPhoto;
+			sourceTree = "<group>";
+		};
+		FE82F97025EED46200CE0129 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FE82F97125EED46200CE0129 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FE82F97B25EED46200CE0129 /* CleanMyPhotoTests */ = {
+			isa = PBXGroup;
+			children = (
+				FE82F97C25EED46200CE0129 /* CleanMyPhotoTests.swift */,
+				FE82F97E25EED46200CE0129 /* Info.plist */,
+			);
+			path = CleanMyPhotoTests;
+			sourceTree = "<group>";
+		};
+		FE82F98625EED46200CE0129 /* CleanMyPhotoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FE82F98725EED46200CE0129 /* CleanMyPhotoUITests.swift */,
+				FE82F98925EED46200CE0129 /* Info.plist */,
+			);
+			path = CleanMyPhotoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE82F96625EED45F00CE0129 /* CleanMyPhoto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE82F98C25EED46200CE0129 /* Build configuration list for PBXNativeTarget "CleanMyPhoto" */;
+			buildPhases = (
+				FE82F96325EED45F00CE0129 /* Sources */,
+				FE82F96425EED45F00CE0129 /* Frameworks */,
+				FE82F96525EED45F00CE0129 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CleanMyPhoto;
+			productName = CleanMyPhoto;
+			productReference = FE82F96725EED45F00CE0129 /* CleanMyPhoto.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FE82F97725EED46200CE0129 /* CleanMyPhotoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE82F98F25EED46200CE0129 /* Build configuration list for PBXNativeTarget "CleanMyPhotoTests" */;
+			buildPhases = (
+				FE82F97425EED46200CE0129 /* Sources */,
+				FE82F97525EED46200CE0129 /* Frameworks */,
+				FE82F97625EED46200CE0129 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE82F97A25EED46200CE0129 /* PBXTargetDependency */,
+			);
+			name = CleanMyPhotoTests;
+			productName = CleanMyPhotoTests;
+			productReference = FE82F97825EED46200CE0129 /* CleanMyPhotoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FE82F98225EED46200CE0129 /* CleanMyPhotoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE82F99225EED46200CE0129 /* Build configuration list for PBXNativeTarget "CleanMyPhotoUITests" */;
+			buildPhases = (
+				FE82F97F25EED46200CE0129 /* Sources */,
+				FE82F98025EED46200CE0129 /* Frameworks */,
+				FE82F98125EED46200CE0129 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE82F98525EED46200CE0129 /* PBXTargetDependency */,
+			);
+			name = CleanMyPhotoUITests;
+			productName = CleanMyPhotoUITests;
+			productReference = FE82F98325EED46200CE0129 /* CleanMyPhotoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE82F95F25EED45F00CE0129 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					FE82F96625EED45F00CE0129 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					FE82F97725EED46200CE0129 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = FE82F96625EED45F00CE0129;
+					};
+					FE82F98225EED46200CE0129 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = FE82F96625EED45F00CE0129;
+					};
+				};
+			};
+			buildConfigurationList = FE82F96225EED45F00CE0129 /* Build configuration list for PBXProject "CleanMyPhoto" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE82F95E25EED45F00CE0129;
+			productRefGroup = FE82F96825EED45F00CE0129 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE82F96625EED45F00CE0129 /* CleanMyPhoto */,
+				FE82F97725EED46200CE0129 /* CleanMyPhotoTests */,
+				FE82F98225EED46200CE0129 /* CleanMyPhotoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE82F96525EED45F00CE0129 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE82F97225EED46200CE0129 /* Preview Assets.xcassets in Resources */,
+				FE82F96F25EED46200CE0129 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE82F97625EED46200CE0129 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE82F98125EED46200CE0129 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE82F96325EED45F00CE0129 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE82F96D25EED45F00CE0129 /* ContentView.swift in Sources */,
+				FE82F96B25EED45F00CE0129 /* CleanMyPhotoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE82F97425EED46200CE0129 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE82F97D25EED46200CE0129 /* CleanMyPhotoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE82F97F25EED46200CE0129 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE82F98825EED46200CE0129 /* CleanMyPhotoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE82F97A25EED46200CE0129 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE82F96625EED45F00CE0129 /* CleanMyPhoto */;
+			targetProxy = FE82F97925EED46200CE0129 /* PBXContainerItemProxy */;
+		};
+		FE82F98525EED46200CE0129 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE82F96625EED45F00CE0129 /* CleanMyPhoto */;
+			targetProxy = FE82F98425EED46200CE0129 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FE82F98A25EED46200CE0129 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FE82F98B25EED46200CE0129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE82F98D25EED46200CE0129 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CleanMyPhoto/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CleanMyPhoto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE82F98E25EED46200CE0129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CleanMyPhoto/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CleanMyPhoto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FE82F99025EED46200CE0129 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CleanMyPhotoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhotoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanMyPhoto.app/CleanMyPhoto";
+			};
+			name = Debug;
+		};
+		FE82F99125EED46200CE0129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CleanMyPhotoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhotoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanMyPhoto.app/CleanMyPhoto";
+			};
+			name = Release;
+		};
+		FE82F99325EED46200CE0129 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CleanMyPhotoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhotoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CleanMyPhoto;
+			};
+			name = Debug;
+		};
+		FE82F99425EED46200CE0129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CleanMyPhotoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhotoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CleanMyPhoto;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE82F96225EED45F00CE0129 /* Build configuration list for PBXProject "CleanMyPhoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE82F98A25EED46200CE0129 /* Debug */,
+				FE82F98B25EED46200CE0129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE82F98C25EED46200CE0129 /* Build configuration list for PBXNativeTarget "CleanMyPhoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE82F98D25EED46200CE0129 /* Debug */,
+				FE82F98E25EED46200CE0129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE82F98F25EED46200CE0129 /* Build configuration list for PBXNativeTarget "CleanMyPhotoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE82F99025EED46200CE0129 /* Debug */,
+				FE82F99125EED46200CE0129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE82F99225EED46200CE0129 /* Build configuration list for PBXNativeTarget "CleanMyPhotoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE82F99325EED46200CE0129 /* Debug */,
+				FE82F99425EED46200CE0129 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FE82F95F25EED45F00CE0129 /* Project object */;
+}
