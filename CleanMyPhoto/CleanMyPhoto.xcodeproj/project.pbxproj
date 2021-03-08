@@ -13,6 +13,7 @@
 		FE82F97225EED46200CE0129 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE82F97125EED46200CE0129 /* Preview Assets.xcassets */; };
 		FE82F97D25EED46200CE0129 /* CleanMyPhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F97C25EED46200CE0129 /* CleanMyPhotoTests.swift */; };
 		FE82F98825EED46200CE0129 /* CleanMyPhotoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F98725EED46200CE0129 /* CleanMyPhotoUITests.swift */; };
+		FE82F99925F15E7B00CE0129 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F99825F15E7B00CE0129 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		FE82F98325EED46200CE0129 /* CleanMyPhotoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanMyPhotoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE82F98725EED46200CE0129 /* CleanMyPhotoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMyPhotoUITests.swift; sourceTree = "<group>"; };
 		FE82F98925EED46200CE0129 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE82F99825F15E7B00CE0129 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				FE82F96C25EED45F00CE0129 /* ContentView.swift */,
 				FE82F96E25EED46200CE0129 /* Assets.xcassets */,
 				FE82F97325EED46200CE0129 /* Info.plist */,
+				FE82F99825F15E7B00CE0129 /* ImagePicker.swift */,
 				FE82F97025EED46200CE0129 /* Preview Content */,
 			);
 			path = CleanMyPhoto;
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE82F99925F15E7B00CE0129 /* ImagePicker.swift in Sources */,
 				FE82F96D25EED45F00CE0129 /* ContentView.swift in Sources */,
 				FE82F96B25EED45F00CE0129 /* CleanMyPhotoApp.swift in Sources */,
 			);
@@ -429,7 +433,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -450,7 +454,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mudritskiy.CleanMyPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
