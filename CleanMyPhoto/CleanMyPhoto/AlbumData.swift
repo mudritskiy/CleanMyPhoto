@@ -11,9 +11,11 @@ import Photos
 struct AlbumData {
     
     var assets: [AssetWithData] = []
+    var sections: [AlbumSection] = []
     
     init() {
         assets = fetchAssets()
+        sections = fetchSections(for: assets, by: .date)
     }
     
     private func fetchAssets() -> [AssetWithData] {
@@ -40,20 +42,33 @@ struct AlbumData {
 
         return result
     }
-
-    func getImage(for asset:PHAsset, with size: CGSize) -> UIImage {
+    
+    private func fetchSections(for assets: [AssetWithData], by option: SectionType) -> [AlbumSection] {
         
-        var result = UIImage()
+        var sections: [AlbumSection] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y, MMMM d"
         
-        PHImageManager.default().requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: nil) {(image, _) -> Void in
-            result = image ?? UIImage()
+        switch option {
+        case .date:
+            let sectionsRaw = assets
+                .sorted { $0.creationDare < $1.creationDare }
+                .map { $0.creationDare.removeTimeStamp() }
+                .unique()
+            sectionsRaw.forEach { sectionDate in
+                let assetsRange = assets
+                    .filter { $0.creationDare.removeTimeStamp() == sectionDate }
+                    .map { $0.id }
+                sections.append(AlbumSection(name: formatter.string(from: sectionDate), range: assetsRange))
+            }
+            return sections
         }
-        return result
     }
 }
 
-struct AssetWithData {
+struct AssetWithData: Identifiable {
     
+    let id = UUID()
     let asset: PHAsset
     let creationDare: Date
     let size: Float
@@ -64,4 +79,14 @@ struct AssetWithData {
         self.size = asset.fileSize
     }
     
+}
+
+enum SectionType {
+    case date
+}
+
+struct AlbumSection: Identifiable {
+    let id = UUID()
+    let name: String
+    let range: [UUID]
 }
