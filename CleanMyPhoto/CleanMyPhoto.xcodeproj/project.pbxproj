@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE53A5C725FE15950031BDAF /* SectionView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53A5C625FE15950031BDAF /* SectionView2.swift */; };
 		FE82F96B25EED45F00CE0129 /* CleanMyPhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */; };
 		FE82F96D25EED45F00CE0129 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F96C25EED45F00CE0129 /* ContentView.swift */; };
 		FE82F96F25EED46200CE0129 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE82F96E25EED46200CE0129 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE53A5C625FE15950031BDAF /* SectionView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView2.swift; sourceTree = "<group>"; };
 		FE82F96725EED45F00CE0129 /* CleanMyPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanMyPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMyPhotoApp.swift; sourceTree = "<group>"; };
 		FE82F96C25EED45F00CE0129 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */,
 				FE82F96C25EED45F00CE0129 /* ContentView.swift */,
 				FE82F9BD25FD018C00CE0129 /* SectionView.swift */,
+				FE53A5C625FE15950031BDAF /* SectionView2.swift */,
 				FE82F9B025F973B300CE0129 /* CellAssetView.swift */,
 				FE82F9B525FCDFE300CE0129 /* CheckBoxView.swift */,
 				FE82F9AB25F96F6100CE0129 /* Helper.swift */,
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE53A5C725FE15950031BDAF /* SectionView2.swift in Sources */,
 				FE82F9B625FCDFE300CE0129 /* CheckBoxView.swift in Sources */,
 				FE82F99925F15E7B00CE0129 /* ImagePicker.swift in Sources */,
 				FE82F9B125F973B300CE0129 /* CellAssetView.swift in Sources */,
