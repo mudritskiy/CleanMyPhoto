@@ -10,21 +10,30 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var checkedAssets: Set<UUID> = []
+
     var body: some View {
-        
+
         let album = AlbumData()
-        
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 20) {
-                ForEach(album.sections, id: \.id) { section in
-                    Section() {
-                        SectionView(album: album, section: section)
+
+        ZStack {
+            Color.color1
+                .ignoresSafeArea(.all)
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 20) {
+                    ForEach(album.sections, id: \.id) { section in
+                        Section() {
+                            SectionView2(album: album, section: section, checkedAssets: $checkedAssets)
+                                .padding(.trailing, 20)
+                        }
                     }
                 }
             }
+            .padding()
         }
-        .padding()
+        
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
