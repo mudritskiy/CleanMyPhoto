@@ -8,11 +8,12 @@
 import UIKit
 import Photos
 
-struct AlbumData {
+class AlbumData: ObservableObject {
     
     var assets: [AssetWithData] = []
     var sections: [AlbumSection] = []
-    
+    @Published var checkedAssets: Set<UUID> = []
+
     init() {
         assets = fetchAssets()
         sections = fetchSections(for: assets, by: .date)
@@ -62,6 +63,18 @@ struct AlbumData {
                 sections.append(AlbumSection(name: formatter.string(from: sectionDate), range: assetsRange))
             }
             return sections
+        }
+    }
+
+    func addChecked(range: [UUID]) {
+        range.forEach {
+            checkedAssets.insert($0)
+        }
+    }
+
+    func removeChecked(range: [UUID]) {
+        range.forEach {
+            checkedAssets.remove($0)
         }
     }
 }
