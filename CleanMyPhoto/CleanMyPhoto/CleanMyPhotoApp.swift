@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct CleanMyPhotoApp: App {
+
+    @StateObject var album = AlbumData()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(album)
         }
     }
 }

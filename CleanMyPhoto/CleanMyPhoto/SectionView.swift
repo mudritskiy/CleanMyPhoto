@@ -1,75 +1,87 @@
-////
-////  SectionView.swift
-////  CleanMyPhoto
-////
-////  Created by Volodymyr Mudrik on 13.03.2021.
-////
 //
-//import SwiftUI
+//  SectionView.swift
+//  CleanMyPhoto
 //
-//struct SectionView: View {
+//  Created by Volodymyr Mudrik on 13.03.2021.
 //
-//    @State var album: AlbumData
-//    @State var section: AlbumSection
-//
-//    @State private var checked = false
-//    @State private var trimValue: CGFloat = 0
-//
-//   let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-//
-//    var body: some View {
-//
-//        HStack(alignment: VerticalAlignment.top) {
-//
-//            Rectangle()
-//                .foregroundColor(Color.black.opacity(0.5))
-//                .frame(width: 6)
-//                .clipShape(RoundedRectangle(cornerRadius: 2))
-//
-//            VStack(alignment: HorizontalAlignment.leading) {
-//                HStack(alignment: VerticalAlignment.center) {
-//                    Text("\(section.name)")
-//                        .font(.headline)
-//                    Rectangle().frame(height: 1)
-//                        .foregroundColor(Color.gray.opacity(0.5))
-//                        .offset(x: -5)
-//                }
-//                Text("6 photo, 1 video (24 Mb)")
-//                    .font(.caption)
-//                    .foregroundColor(.gray)
-//            }
-//
-//            CheckBoxView(checked: $checked, trimValue: $trimValue)
-//                .onTapGesture {
-//                    if self.checked {
-//                        withAnimation {
-//                            self.checked.toggle()
-//                            self.trimValue = 0
-//                        }
-//                    } else {
-//                        withAnimation(.easeIn(duration: 0.3)) {
-//                            self.checked.toggle()
-//                            self.trimValue = 1
-//                        }
-//                    }
-//                }
-//                .offset(x: -5, y: 5)
-//        }
-//
-//        LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
-//            ForEach(section.range, id: \.self) { assetId in
-//                if let asset = album.assets.filter { $0.id == assetId}.first {
-//                    CellAssetView(asset: asset.asset)
-//                }
-//            }
-//        }
-//        .padding(.horizontal, 10)
+
+import SwiftUI
+
+struct SectionView: View {
+
+    @EnvironmentObject var album: AlbumData
+    var section: AlbumSection
+    private var checked: Bool { rangeChecked(sectionRange: section.range, checkedRange: album.checkedAssets) }
+
+    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+
+    var body: some View {
+
+        let shadowRadius: CGFloat = 1
+        let checkboxContainerSize: CGFloat = 50
+
+        ZStack {
+            Color.color3
+                .customShadow(shadowRadius: shadowRadius)
+
+            HStack(alignment: VerticalAlignment.center) {
+
+                Rectangle()
+                    .foregroundColor(Color.color2.opacity(0.1))
+                    .frame(width: 1)
+
+                VStack(alignment: HorizontalAlignment.leading) {
+                    HStack(alignment: VerticalAlignment.center) {
+                        Text("\(section.name)")
+                            .font(.headline)
+                        //                        Rectangle().frame(height: 1)
+                        //                            .foregroundColor(Color.gray.opacity(0.5))
+                        //                            .offset(x: -5)
+                    }
+                    Text("6 photo, 1 video (24 Mb)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+
+                Spacer()
+
+                ZStack(alignment: Alignment.leading) {
+
+                    Rectangle()
+                        .foregroundColor(Color.color4.opacity(1.0))
+                        .frame(width: checkboxContainerSize)
+                    Rectangle()
+                        .foregroundColor(Color.color2.opacity(0.1))
+                        .frame(width: 1)
+
+                    CheckBoxView(checked: checked, range: section.range, size: 20, showOverlay: false)
+                        .offset(x: (checkboxContainerSize - 20 )/2)
+                }
+            }
+        }
+        .frame(height: 50)
+
+        LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
+            ForEach(section.range, id: \.self) { assetId in
+                if let assetWithData = album.assets.filter { $0.id == assetId}.first {
+                    CellAssetView(assetWithData: assetWithData)
+                }
+            }
+        }
+        .padding(.horizontal, 10)
+    }
+
+    private func rangeChecked(sectionRange: [UUID], checkedRange: Set<UUID>) -> Bool {
+        let range = sectionRange.reduce(into: Set<UUID>(), { (result, object) in
+            result.insert(object)
+        })
+        return range.isSubset(of: checkedRange)
+    }
+}
+
+
+//struct SectionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SectionView()
 //    }
-//
 //}
-//
-////struct SectionView_Previews: PreviewProvider {
-////    static var previews: some View {
-////        SectionView()
-////    }
-////}

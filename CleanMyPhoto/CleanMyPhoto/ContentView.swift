@@ -9,21 +9,22 @@ import Photos
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State var checkedAssets: Set<UUID> = []
+
+    @EnvironmentObject var album: AlbumData
+//    @State var checkedAssets: Set<UUID> = []
 
     var body: some View {
 
-        let album = AlbumData()
+//        let album = AlbumData()
 
         ZStack {
-            Color.color1
-                .ignoresSafeArea(.all)
+//            Color.color1
+//                .ignoresSafeArea(.all)
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 20) {
                     ForEach(album.sections, id: \.id) { section in
                         Section() {
-                            SectionView2(album: album, section: section, checkedAssets: $checkedAssets)
+                            SectionView(section: section)
                                 .padding(.trailing, 20)
                         }
                     }
