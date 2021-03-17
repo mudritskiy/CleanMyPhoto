@@ -8,14 +8,11 @@
 import Photos
 import SwiftUI
 
-struct ContentView: View {
+struct AlbumList: View {
 
     @EnvironmentObject var album: AlbumData
-//    @State var checkedAssets: Set<UUID> = []
 
     var body: some View {
-
-//        let album = AlbumData()
 
         ZStack {
 //            Color.color1
@@ -32,13 +29,11 @@ struct ContentView: View {
             }
             .padding()
         }
-        
     }
-
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AlbumList()
     }
 }
