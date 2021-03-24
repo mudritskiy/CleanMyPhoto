@@ -12,63 +12,59 @@ struct SectionView: View {
     @EnvironmentObject var album: AlbumData
     var section: AlbumSection
     private var checked: Bool { rangeChecked(sectionRange: section.range, checkedRange: album.checkedAssets) }
+    @State private var expanded: Bool = true
 
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
 
     var body: some View {
 
-        let shadowRadius: CGFloat = 1
-        let checkboxContainerSize: CGFloat = 50
-
-        ZStack {
-            Color.color3
-                .customShadow(shadowRadius: shadowRadius)
-
-            HStack(alignment: VerticalAlignment.center) {
-
-                Rectangle()
-                    .foregroundColor(Color.color2.opacity(0.1))
-                    .frame(width: 1)
-
-                VStack(alignment: HorizontalAlignment.leading) {
+        ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
+            sectionHeaderTitleCount.offset(x: 0, y: 5)
+            VStack(spacing: 0) {
+                ZStack(alignment: Alignment.bottomLeading) {
                     HStack(alignment: VerticalAlignment.center) {
-                        Text("\(section.name)")
-                            .font(.headline)
-                        //                        Rectangle().frame(height: 1)
-                        //                            .foregroundColor(Color.gray.opacity(0.5))
-                        //                            .offset(x: -5)
+                        sectionHeaderTitle
+                        Spacer()
+                        sectionCheckbox
                     }
-                    Text("6 photo, 1 video (24 Mb)")
-                        .font(.caption)
-                        .foregroundColor(.gray)
                 }
+                .frame(height: 25)
+                Rectangle()
+                    .frame(height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.color3)
+                if self.expanded {
+                    cellGrid
+                }
+                bottomGridShape()
+                    .frame(height: 15, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.color3)
+            }
+            .compositingGroup()
+            .shadow(color: Color.color5.opacity(0.3), radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
 
+            HStack {
                 Spacer()
-
-                ZStack(alignment: Alignment.leading) {
-
-                    Rectangle()
-                        .foregroundColor(Color.color4.opacity(1.0))
-                        .frame(width: checkboxContainerSize)
-                    Rectangle()
-                        .foregroundColor(Color.color2.opacity(0.1))
-                        .frame(width: 1)
-
-                    CheckBoxView(checked: checked, range: section.range, size: 20, showOverlay: false)
-                        .offset(x: (checkboxContainerSize - 20 )/2)
+                ZStack {
+                    Circle()
+                        .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: 01)
+                        .stroke(style: StrokeStyle(lineWidth: 1))
+                        .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.white)
+                    Image(systemName: "chevron.down.circle")
+                        .foregroundColor(Color.color5.opacity(0.5))
+                        .font(.system(size: 15))
+                        .rotationEffect(expanded ? .init(degrees: 180) : .zero)
+                }
+                .offset(x: -5, y: 28)
+                .onTapGesture {
+                    withAnimation(.interpolatingSpring(mass: 0.7, stiffness: 20, damping: 5.0, initialVelocity: 3.5)) {
+                        self.expanded = !self.expanded
+                    }
                 }
             }
-        }
-        .frame(height: 50)
 
-        LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
-            ForEach(section.range, id: \.self) { assetId in
-                if let assetWithData = album.assets.filter { $0.id == assetId}.first {
-                    CellAssetView(assetWithData: assetWithData)
-                }
-            }
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 30)
     }
 
     private func rangeChecked(sectionRange: [UUID], checkedRange: Set<UUID>) -> Bool {
@@ -79,9 +75,126 @@ struct SectionView: View {
     }
 }
 
+private extension SectionView {
+    var cellGrid: some View {
+        ZStack {
+            Color.color3
+            LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
+                ForEach(section.range, id: \.self) { assetId in
+                    if let assetWithData = album.assets.filter { $0.id == assetId}.first {
+                        let firstRow = section.range.firstIndex(of: assetId) ?? 0 < 4
+                        CellAssetView(assetWithData: assetWithData, firstRow: firstRow)
+                    }
+                }
+            }
+        }
+    }
+}
+
+private extension SectionView {
+    var sectionCheckbox: some View {
+        ZStack(alignment: Alignment.leading) {
+            CheckBoxView(checked: checked, range: section.range, size: 15, showOverlay: true)
+                .offset(x: -7, y: 0)
+        }
+    }
+
+    var sectionHeaderTitle: some View {
+        VStack(alignment: HorizontalAlignment.leading) {
+            ZStack(alignment: .bottomLeading) {
+                titleShape()
+                    .frame(width: 150, height: 25, alignment: .leading)
+                    .foregroundColor(.color3)
+
+                HStack {
+                    Text("\(section.name)")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.color5)
+                    Text("\(section.subname)")
+                        .font(.subheadline)
+                        .fontWeight(.light)
+                        .foregroundColor(.color5)
+                }
+                .offset(x: 7, y: -3)
+            }
+        }
+    }
+    var sectionHeaderTitleCount: some View {
+        VStack(alignment: HorizontalAlignment.leading) {
+            ZStack(alignment: .bottomLeading) {
+                let widthFirst: CGFloat = 150
+                let offset1 = widthFirst - 20
+                let offset2 = offset1 + 60
+
+                if section.typeCount.videos > 0 {
+                    titleShape()
+                        .frame(width: 80, height: 17, alignment: .leading)
+                        .foregroundColor(.color4)
+                        .offset(x: offset2, y: -0)
+                        .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: -0)
+                }
+                if section.typeCount.photos > 0 {
+                    titleShape()
+                        .frame(width: 80, height: 20, alignment: .leading)
+                        .foregroundColor(.color4)
+                        .offset(x: offset1, y: -0)
+                        .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: -0)
+                }
+                if section.typeCount.photos > 0 {
+                    Text("\(section.typeCount.photos) photos")
+                        .font(.system(size: 11, weight: .thin))
+                        .offset(x: offset1 + 25, y: -3)
+                }
+                if section.typeCount.videos > 0 {
+                    Text("\(section.typeCount.videos) videos")
+                        .font(.system(size: 11, weight: .ultraLight))
+                        .offset(x: offset2 + 25, y: -3)
+                }
+            }
+        }
+    }
+}
+
+
+
+struct titleShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let shift: CGFloat = rect.maxY / 1.5
+
+        path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+        path.addArc(center: CGPoint(x: rect.minX + 5, y: rect.minY + 5), radius: 5, startAngle: Angle(degrees: -180), endAngle: Angle(degrees: -90), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.maxX - shift, y: rect.minY))
+        path.addArc(center: CGPoint(x: rect.maxX - shift, y: rect.minY + 5), radius: 5, startAngle: Angle(degrees: -90), endAngle: Angle(degrees: -30), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+
+        return path
+    }
+}
+
+struct bottomGridShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        let cornerRadius: CGFloat = 10
+        var path = Path()
+
+        path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - cornerRadius))
+        path.addArc(center: CGPoint(x: rect.maxX - cornerRadius, y: rect.maxY - cornerRadius), radius: cornerRadius, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.minX + cornerRadius, y: rect.maxY))
+        path.addArc(center: CGPoint(x: rect.minX + cornerRadius, y: rect.maxY - cornerRadius), radius: cornerRadius, startAngle: Angle(degrees: 90), endAngle: Angle(degrees: 180), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+
+        return path
+    }
+}
 
 //struct SectionView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SectionView()
+//        SectionView(section: AlbumSection(name: "test", range: []))
 //    }
 //}
+

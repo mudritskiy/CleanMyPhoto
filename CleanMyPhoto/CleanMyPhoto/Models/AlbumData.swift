@@ -5,8 +5,11 @@
 //  Created by Volodymyr Mudrik on 10.03.2021.
 //
 
+//import Foundation
 import UIKit
 import Photos
+import Foundation
+
 
 class AlbumData: ObservableObject {
     
@@ -47,9 +50,11 @@ class AlbumData: ObservableObject {
     private func fetchSections(for assets: [AssetWithData], by option: SectionType) -> [AlbumSection] {
         
         var sections: [AlbumSection] = []
-        let formatter = DateFormatter()
-        formatter.dateFormat = "y, MMMM d"
-        
+        let formatterDate = DateFormatter()
+        formatterDate.dateFormat = "MMMM d"
+        let formatterYear = DateFormatter()
+        formatterYear.dateFormat = "y"
+
         switch option {
         case .date:
             let sectionsRaw = assets
@@ -60,7 +65,13 @@ class AlbumData: ObservableObject {
                 let assetsRange = assets
                     .filter { $0.creationDare.removeTimeStamp() == sectionDate }
                     .map { $0.id }
-                sections.append(AlbumSection(name: formatter.string(from: sectionDate), range: assetsRange))
+                let videos = assets
+                    .filter { assetsRange.contains($0.id) && $0.asset.mediaType == .video }
+                    .count
+                let photos = assets
+                    .filter { assetsRange.contains($0.id) && $0.asset.mediaType == .image }
+                    .count
+                sections.append(AlbumSection(name: formatterDate.string(from: sectionDate), subname: formatterYear.string(from: sectionDate), range: assetsRange, typeCount: (photos: photos, videos: videos)))
             }
             return sections
         }
@@ -84,14 +95,15 @@ struct AssetWithData: Identifiable {
     let id = UUID()
     let asset: PHAsset
     let creationDare: Date
-    let size: Float
-    
+    let size: Int64
+    let duration: TimeInterval
+
     init(_ asset: PHAsset) {
         self.asset = asset
         self.creationDare = asset.creationDate ?? Date()
         self.size = asset.fileSize
+        self.duration = asset.duration
     }
-    
 }
 
 enum SectionType {
@@ -101,5 +113,7 @@ enum SectionType {
 struct AlbumSection: Identifiable {
     let id = UUID()
     let name: String
+    let subname: String
     let range: [UUID]
+    let typeCount: (photos: Int, videos: Int)
 }
