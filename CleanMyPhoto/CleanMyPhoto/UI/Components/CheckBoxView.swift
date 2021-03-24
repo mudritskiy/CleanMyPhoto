@@ -17,27 +17,32 @@ struct CheckBoxView: View {
 
     var body: some View {
 
-        let sizeInner = size * (showOverlay ? 0.75 : 1)
-        let color: Color = (showOverlay ? Color.white : Color.color1).opacity(0.9)
+        let sizeInner = size * (showOverlay ? 0.9 : 1)
 
         ZStack {
+            if !checked && showOverlay {
+                Circle()
+                    .stroke(style: StrokeStyle(lineWidth: 1))
+                    .frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(Color.color5.opacity(0.5))
+            }
             Circle()
-                .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: checked ? 1 : 0)
-                .stroke(style: StrokeStyle(lineWidth: 2))
+                .trim(from: 0, to: checked ? 1 : 0)
+                .stroke(style: StrokeStyle(lineWidth: 3))
                 .frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .foregroundColor(checked ? .white : color)
+                .foregroundColor(.color3)
                 .overlay(
                     Circle()
-                        .fill(checked ? .blue : color)
+                        .fill(checked ? Color.color5 : Color.color3)
                         .frame(width: sizeInner, height: sizeInner, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
             if checked {
                 Image(systemName: "checkmark")
                     .foregroundColor(.white)
-                    .font(.system(size: 13))
+                    .font(.system(size: 9))
             }
         }
         .onTapGesture {
-            withAnimation(.easeIn(duration: checked ? 0.0 : 0.3)) {
+            withAnimation(.easeIn(duration: checked ? 0.3 : 0.3)) {
                 if self.checked {
                     self.album.removeChecked(range: range)
                 } else {

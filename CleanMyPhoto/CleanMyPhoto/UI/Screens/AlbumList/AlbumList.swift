@@ -15,8 +15,7 @@ struct AlbumList: View {
     var body: some View {
 
         ZStack {
-//            Color.color1
-//                .ignoresSafeArea(.all)
+//            Color.color4.ignoresSafeArea(.all)
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 20) {
                     ForEach(album.sections, id: \.id) { section in
@@ -27,7 +26,6 @@ struct AlbumList: View {
                     }
                 }
             }
-            .padding()
         }
     }
 }

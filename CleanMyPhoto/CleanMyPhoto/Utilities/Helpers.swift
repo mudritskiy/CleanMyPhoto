@@ -11,13 +11,31 @@ import SwiftUI
 
 extension PHAsset {
     
-    var fileSize: Float {
+    var fileSize: Int64 {
         get {
             let resource = PHAssetResource.assetResources(for: self)
-            let fileSizeByte = resource.first?.value(forKey: "fileSize") as? Float ?? 0
-            let fileSizeMb = fileSizeByte / ( 1024.0 * 1024.0)
-            return fileSizeMb
+            let fileSizeByte = resource.first?.value(forKey: "fileSize") as? Int64 ?? 0
+            return fileSizeByte
         }
+    }
+
+    var readableSize: String {
+        get {
+            let formatter = ByteCountFormatter()
+            formatter.allowedUnits = .useAll
+            formatter.countStyle = .file
+            formatter.includesUnit = true
+            formatter.isAdaptive = true
+            return formatter.string(fromByteCount: fileSize)
+        }
+    }
+
+    var readbleDuration: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .dropLeading
+        return formatter.string(from: self.duration) ?? ""
     }
 
     func getImage(with size: CGSize) -> UIImage {
@@ -60,6 +78,12 @@ extension Color {
     public static var color4: Color {
         return Color.init(#colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9764705882, alpha: 1)) // #fafbff
     }
+    public static var color5: Color {
+        return Color.init(#colorLiteral(red: 0.4078431373, green: 0.3843137255, blue: 0.5843137255, alpha: 1))
+    }
+    public static var color6: Color {
+        return Color.init(#colorLiteral(red: 0.8980392157, green: 0.9058823529, blue: 0.9607843137, alpha: 1))
+    }
 }
 
 extension View {
@@ -79,3 +103,4 @@ extension View {
             .shadow(color: Color.color3.opacity(opacity), radius: shadowRadius, x: -shadowRadius, y: -shadowRadius)
     }
 }
+
