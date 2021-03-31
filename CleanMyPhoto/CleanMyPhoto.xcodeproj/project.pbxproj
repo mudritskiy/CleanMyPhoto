@@ -19,6 +19,7 @@
 		FE82F9AC25F96F6100CE0129 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F9AB25F96F6100CE0129 /* Helpers.swift */; };
 		FE82F9B125F973B300CE0129 /* CellAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F9B025F973B300CE0129 /* CellAssetView.swift */; };
 		FE82F9B625FCDFE300CE0129 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F9B525FCDFE300CE0129 /* CheckBoxView.swift */; };
+		FEE76DE02610AA5F0022A50D /* ClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE76DDF2610AA5F0022A50D /* ClearView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FE82F9AB25F96F6100CE0129 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		FE82F9B025F973B300CE0129 /* CellAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAssetView.swift; sourceTree = "<group>"; };
 		FE82F9B525FCDFE300CE0129 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		FEE76DDF2610AA5F0022A50D /* ClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				FE53A5D5260264720031BDAF /* AlbumList */,
+				FEE76DDE2610AA240022A50D /* ClearView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -194,6 +197,14 @@
 				FE82F98925EED46200CE0129 /* Info.plist */,
 			);
 			path = CleanMyPhotoUITests;
+			sourceTree = "<group>";
+		};
+		FEE76DDE2610AA240022A50D /* ClearView */ = {
+			isa = PBXGroup;
+			children = (
+				FEE76DDF2610AA5F0022A50D /* ClearView.swift */,
+			);
+			path = ClearView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +342,7 @@
 				FE82F9B125F973B300CE0129 /* CellAssetView.swift in Sources */,
 				FE82F9A725F954FA00CE0129 /* AlbumData.swift in Sources */,
 				FE82F9AC25F96F6100CE0129 /* Helpers.swift in Sources */,
+				FEE76DE02610AA5F0022A50D /* ClearView.swift in Sources */,
 				FE82F96D25EED45F00CE0129 /* AlbumList.swift in Sources */,
 				FE82F96B25EED45F00CE0129 /* CleanMyPhotoApp.swift in Sources */,
 			);

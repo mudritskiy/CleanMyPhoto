@@ -16,6 +16,7 @@ class AlbumData: ObservableObject {
     var assets: [AssetWithData] = []
     var sections: [AlbumSection] = []
     @Published var checkedAssets: Set<UUID> = []
+    @Published var zoomedAsset: UUID? = nil
 
     init() {
         assets = fetchAssets()
@@ -28,7 +29,7 @@ class AlbumData: ObservableObject {
 
         let collection = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
         if let album = collection.firstObject {
-         
+
             let options = PHFetchOptions()
             options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
@@ -88,6 +89,27 @@ class AlbumData: ObservableObject {
             checkedAssets.remove($0)
         }
     }
+
+    func getAsset(by id: UUID?) -> PHAsset {
+        guard let firstAsset = assets.filter({ $0.id == id }).first?.asset else { return PHAsset() }
+        return firstAsset
+    }
+}
+
+extension AlbumData {
+
+    var assetsCount: (all: Int, checked: Int, percentage: CGFloat) {
+        let allAssetsInAlbum = self.assets.count
+        let checkedAssetsInAlbum = self.checkedAssets.count
+        let percentageBetween = CGFloat(checkedAssetsInAlbum) / CGFloat(allAssetsInAlbum)
+        return (allAssetsInAlbum, checkedAssetsInAlbum, percentageBetween )
+    }
+
+    var sizeSum: (all: FileSizeDimension, checked: FileSizeDimension) {
+        let allSize = self.assets.map { $0.size }.reduce(0, +)
+        let checkedSize = self.assets.filter { checkedAssets.contains($0.id) }.map { $0.size }.reduce(0, +)
+        return (allSize, checkedSize)
+    }
 }
 
 struct AssetWithData: Identifiable {
@@ -95,7 +117,7 @@ struct AssetWithData: Identifiable {
     let id = UUID()
     let asset: PHAsset
     let creationDare: Date
-    let size: Int64
+    let size: FileSizeDimension
     let duration: TimeInterval
 
     init(_ asset: PHAsset) {

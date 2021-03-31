@@ -15,6 +15,7 @@ struct SectionView: View {
     @State private var expanded: Bool = true
 
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
+    let sectiocColor: Color = .white
 
     var body: some View {
 
@@ -31,16 +32,17 @@ struct SectionView: View {
                 .frame(height: 25)
                 Rectangle()
                     .frame(height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.color3)
+                    .foregroundColor(sectiocColor)
                 if self.expanded {
                     cellGrid
                 }
                 bottomGridShape()
                     .frame(height: 15, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.color3)
+                    .foregroundColor(sectiocColor)
             }
             .compositingGroup()
-            .shadow(color: Color.color5.opacity(0.3), radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+            .shadow(color: Color.color3.opacity(1.0), radius: 1, x: -1, y: -1)
+            .shadow(color: Color.color5.opacity(0.3), radius: 1, x: 1, y: 1)
 
             HStack {
                 Spacer()
@@ -64,7 +66,7 @@ struct SectionView: View {
             }
 
         }
-        .padding(.horizontal, 30)
+//        .padding(.horizontal, 10)
     }
 
     private func rangeChecked(sectionRange: [UUID], checkedRange: Set<UUID>) -> Bool {
@@ -78,7 +80,7 @@ struct SectionView: View {
 private extension SectionView {
     var cellGrid: some View {
         ZStack {
-            Color.color3
+            sectiocColor
             LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
                 ForEach(section.range, id: \.self) { assetId in
                     if let assetWithData = album.assets.filter { $0.id == assetId}.first {
@@ -86,7 +88,7 @@ private extension SectionView {
                         CellAssetView(assetWithData: assetWithData, firstRow: firstRow)
                     }
                 }
-            }
+            }.padding(.horizontal, 10)
         }
     }
 }
@@ -104,19 +106,19 @@ private extension SectionView {
             ZStack(alignment: .bottomLeading) {
                 titleShape()
                     .frame(width: 150, height: 25, alignment: .leading)
-                    .foregroundColor(.color3)
+                    .foregroundColor(sectiocColor)
 
                 HStack {
                     Text("\(section.name)")
                         .font(.subheadline)
-                        .fontWeight(.semibold)
+                        .fontWeight(.medium)
                         .foregroundColor(.color5)
                     Text("\(section.subname)")
                         .font(.subheadline)
                         .fontWeight(.light)
                         .foregroundColor(.color5)
                 }
-                .offset(x: 7, y: -3)
+                .offset(x: 7, y: -2)
             }
         }
     }
