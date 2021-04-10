@@ -14,7 +14,7 @@ struct CleanMyPhotoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AlbumList()
+            RootView()
                 .environmentObject(album)
         }
     }
