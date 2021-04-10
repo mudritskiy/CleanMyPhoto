@@ -24,16 +24,16 @@ struct CheckBoxView: View {
                 Circle()
                     .stroke(style: StrokeStyle(lineWidth: 1))
                     .frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(Color.color5.opacity(0.5))
+                    .foregroundColor(Color.ui.accent.opacity(0.5))
             }
             Circle()
                 .trim(from: 0, to: checked ? 1 : 0)
                 .stroke(style: StrokeStyle(lineWidth: 3))
                 .frame(width: size, height: size, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.color3)
+                .foregroundColor(Color.ui.backgound)
                 .overlay(
                     Circle()
-                        .fill(checked ? Color.color5 : Color.color3)
+                        .fill(checked ? Color.ui.accent : Color.ui.backgound)
                         .frame(width: sizeInner, height: sizeInner, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/))
             if checked {
                 Image(systemName: "checkmark")

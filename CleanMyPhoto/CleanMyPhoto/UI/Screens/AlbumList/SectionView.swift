@@ -14,15 +14,19 @@ struct SectionView: View {
     private var checked: Bool { rangeChecked(sectionRange: section.range, checkedRange: album.checkedAssets) }
     @State private var expanded: Bool = true
 
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
+	let columnsCount: Int = 3
+	let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     let sectiocColor: Color = .white
 
     var body: some View {
 
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
-            sectionHeaderTitleCount.offset(x: 0, y: 5)
-            VStack(spacing: 0) {
-                ZStack(alignment: Alignment.bottomLeading) {
+
+			sectionHeaderTitleCount.offset(x: 0, y: 5)
+
+			VStack(spacing: 0) {
+
+				ZStack(alignment: Alignment.bottomLeading) {
                     HStack(alignment: VerticalAlignment.center) {
                         sectionHeaderTitle
                         Spacer()
@@ -30,19 +34,21 @@ struct SectionView: View {
                     }
                 }
                 .frame(height: 25)
-                Rectangle()
+
+				Rectangle()
                     .frame(height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .foregroundColor(sectiocColor)
                 if self.expanded {
                     cellGrid
                 }
-                bottomGridShape()
+
+				bottomGridShape()
                     .frame(height: 15, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .foregroundColor(sectiocColor)
             }
             .compositingGroup()
-            .shadow(color: Color.color3.opacity(1.0), radius: 1, x: -1, y: -1)
-            .shadow(color: Color.color5.opacity(0.3), radius: 1, x: 1, y: 1)
+            .shadow(color: Color.ui.backgound.opacity(1.0), radius: 1, x: -1, y: -1)
+            .shadow(color: Color.ui.accent.opacity(0.3), radius: 1, x: 1, y: 1)
 
             HStack {
                 Spacer()
@@ -53,7 +59,7 @@ struct SectionView: View {
                         .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.white)
                     Image(systemName: "chevron.down.circle")
-                        .foregroundColor(Color.color5.opacity(0.5))
+                        .foregroundColor(Color.ui.accent.opacity(0.5))
                         .font(.system(size: 15))
                         .rotationEffect(expanded ? .init(degrees: 180) : .zero)
                 }
@@ -66,7 +72,6 @@ struct SectionView: View {
             }
 
         }
-//        .padding(.horizontal, 10)
     }
 
     private func rangeChecked(sectionRange: [UUID], checkedRange: Set<UUID>) -> Bool {
@@ -84,7 +89,7 @@ private extension SectionView {
             LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
                 ForEach(section.range, id: \.self) { assetId in
                     if let assetWithData = album.assets.filter { $0.id == assetId}.first {
-                        let firstRow = section.range.firstIndex(of: assetId) ?? 0 < 4
+                        let firstRow = section.range.firstIndex(of: assetId) ?? 0 < columnsCount
                         CellAssetView(assetWithData: assetWithData, firstRow: firstRow)
                     }
                 }
@@ -112,11 +117,11 @@ private extension SectionView {
                     Text("\(section.name)")
                         .font(.subheadline)
                         .fontWeight(.medium)
-                        .foregroundColor(.color5)
+                        .foregroundColor(Color.ui.accent)
                     Text("\(section.subname)")
                         .font(.subheadline)
                         .fontWeight(.light)
-                        .foregroundColor(.color5)
+                        .foregroundColor(Color.ui.accent)
                 }
                 .offset(x: 7, y: -2)
             }
@@ -132,14 +137,14 @@ private extension SectionView {
                 if section.typeCount.videos > 0 {
                     titleShape()
                         .frame(width: 80, height: 17, alignment: .leading)
-                        .foregroundColor(.color4)
+                        .foregroundColor(Color.ui.backgound)
                         .offset(x: offset2, y: -0)
                         .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: -0)
                 }
                 if section.typeCount.photos > 0 {
                     titleShape()
                         .frame(width: 80, height: 20, alignment: .leading)
-                        .foregroundColor(.color4)
+                        .foregroundColor(Color.ui.backgound)
                         .offset(x: offset1, y: -0)
                         .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: -0)
                 }
@@ -157,8 +162,6 @@ private extension SectionView {
         }
     }
 }
-
-
 
 struct titleShape: Shape {
     func path(in rect: CGRect) -> Path {
