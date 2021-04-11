@@ -29,7 +29,7 @@ struct CellAssetView: View {
                     .offset(x: 0, y: -10)
             }
             HStack {
-                Text("\(assetWithData.asset.fileSize.readableSize)")
+				Text("\(assetWithData.asset.fileSize.readableSize.capitalized)")
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(Color.ui.accent)
                     .offset(x: 5, y: -5)

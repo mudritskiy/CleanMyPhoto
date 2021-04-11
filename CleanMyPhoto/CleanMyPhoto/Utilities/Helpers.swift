@@ -55,11 +55,11 @@ extension FileSizeDimension {
         get {
             let formatter = ByteCountFormatter()
             formatter.allowedUnits = .useAll
-            formatter.countStyle = .file
+			formatter.countStyle = .file
             formatter.includesUnit = true
             formatter.isAdaptive = true
             formatter.allowsNonnumericFormatting = false
-            return formatter.string(fromByteCount: self)
+			return formatter.string(fromByteCount: self).capitalized
         }
     }
 
@@ -84,11 +84,14 @@ extension Date {
 }
 
 extension String {
+	var chars: String {
+		guard let result = components(separatedBy: CharacterSet.decimalDigits).last else { return "" }
+			return result
+
+	}
     var digits: String {
-        components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-    }
-    var chars: String {
-        components(separatedBy: CharacterSet.decimalDigits).joined()
+		self.capitalized.replacingOccurrences(of: self.chars, with: "").trimmingCharacters(in: .whitespaces)
+//		components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
     }
 }
 
