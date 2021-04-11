@@ -98,18 +98,25 @@ class AlbumData: ObservableObject {
 
 extension AlbumData {
 
-    var assetsCount: (all: Int, checked: Int, percentage: CGFloat) {
-        let allAssetsInAlbum = self.assets.count
-        let checkedAssetsInAlbum = self.checkedAssets.count
+    var photosCount: (all: Int, checked: Int, percentage: CGFloat) {
+		let allAssetsInAlbum = self.assets.filter { $0.asset.mediaType == .image }.count
+		let checkedAssetsInAlbum = self.assets.filter { checkedAssets.contains($0.id) && $0.asset.mediaType == .image }.count
         let percentageBetween = CGFloat(checkedAssetsInAlbum) / CGFloat(allAssetsInAlbum)
         return (allAssetsInAlbum, checkedAssetsInAlbum, percentageBetween )
     }
 
+	var videosCount: (all: Int, checked: Int, percentage: CGFloat) {
+		let allAssetsInAlbum = self.assets.filter { $0.asset.mediaType == .video }.count 
+		let checkedAssetsInAlbum = self.assets.filter { checkedAssets.contains($0.id) && $0.asset.mediaType == .video }.count
+		let percentageBetween = allAssetsInAlbum != 0 ? CGFloat(checkedAssetsInAlbum) / CGFloat(allAssetsInAlbum) : 0
+		return (allAssetsInAlbum, checkedAssetsInAlbum, percentageBetween )
+	}
+
     var sizeSum: (all: FileSizeDimension, checked: FileSizeDimension, percentage: CGFloat) {
-        let allSize = self.assets.map { $0.size }.reduce(0, +)
+		let allSize = self.assets.map { $0.size }.reduce(0, +)
         let checkedSize = self.assets.filter { checkedAssets.contains($0.id) }.map { $0.size }.reduce(0, +)
-		let percentageBetween = CGFloat(checkedSize) / CGFloat(allSize)
-       return (allSize, checkedSize, percentageBetween)
+		let percentageBetween = allSize == 0 ? 0 : CGFloat(checkedSize) / CGFloat(allSize)
+        return (allSize, checkedSize, percentageBetween)
     }
 }
 
