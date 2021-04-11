@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var selectedView: Int = 1
+    @State var selectedView: Int = 2
     var body: some View {
         TabView(selection: $selectedView) {
             AlbumList()
