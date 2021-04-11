@@ -105,10 +105,11 @@ extension AlbumData {
         return (allAssetsInAlbum, checkedAssetsInAlbum, percentageBetween )
     }
 
-    var sizeSum: (all: FileSizeDimension, checked: FileSizeDimension) {
+    var sizeSum: (all: FileSizeDimension, checked: FileSizeDimension, percentage: CGFloat) {
         let allSize = self.assets.map { $0.size }.reduce(0, +)
         let checkedSize = self.assets.filter { checkedAssets.contains($0.id) }.map { $0.size }.reduce(0, +)
-        return (allSize, checkedSize)
+		let percentageBetween = CGFloat(checkedSize) / CGFloat(allSize)
+       return (allSize, checkedSize, percentageBetween)
     }
 }
 
