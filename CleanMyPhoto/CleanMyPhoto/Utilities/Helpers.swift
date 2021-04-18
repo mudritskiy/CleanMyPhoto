@@ -55,7 +55,7 @@ extension FileSizeDimension {
         get {
             let formatter = ByteCountFormatter()
             formatter.allowedUnits = .useAll
-			formatter.countStyle = .file
+			formatter.countStyle = .memory
             formatter.includesUnit = true
             formatter.isAdaptive = true
             formatter.allowsNonnumericFormatting = false

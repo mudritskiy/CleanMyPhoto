@@ -12,6 +12,8 @@ struct AlbumList: View {
 
 	@EnvironmentObject var album: AlbumData
 	@State var scaleGrade: CGFloat = 0.33
+	@State private var Sorting: Int = 0
+	@State var showMenu: Bool = false
 
 	var body: some View {
 
@@ -30,6 +32,31 @@ struct AlbumList: View {
 			.padding(.horizontal, 10)
 			.blur(radius: album.zoomedAsset == nil ? 0 : 2)
 			.animation(.spring())
+
+			HStack {
+				Spacer()
+				ZStack {
+					Circle()
+						.trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: 01)
+						.stroke(style: StrokeStyle(lineWidth: 1))
+						.frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+						.foregroundColor(.white)
+					Image(systemName: "chevron.down.circle")
+						.foregroundColor(Color.ui.accent.opacity(0.5))
+						.font(.system(size: 15))
+						.rotationEffect(showMenu ? .init(degrees: 180) : .zero)
+				}
+				.offset(x: -5, y: 28)
+				.onTapGesture {
+					withAnimation(.spring()) {
+						self.showMenu = !self.showMenu
+					}
+				}
+			}
+			Menu()
+				.scaleEffect(showMenu ? 1 : 0, anchor: .topTrailing)
+
+
 			if album.zoomedAsset != nil {
 				ZStack {
 					Color.black.opacity(0.05).ignoresSafeArea(.all)
