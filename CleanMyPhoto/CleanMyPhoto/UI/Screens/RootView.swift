@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RootView: View {
-    @State var selectedView: Int = 2
+
+	@State var selectedView: Int = 1
+
     var body: some View {
         TabView(selection: $selectedView) {
             AlbumList()
@@ -17,9 +19,7 @@ struct RootView: View {
             ClearView()
                 .tabItem { Label("Clear", systemImage: "trash") }
                 .tag(2)
-            VStack {
-                
-            }
+            Settings()
             .tabItem { Label("Mode", systemImage: "gearshape") }
             .tag(3)
         }

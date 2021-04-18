@@ -20,6 +20,8 @@
 		FE82F9B125F973B300CE0129 /* CellAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F9B025F973B300CE0129 /* CellAssetView.swift */; };
 		FE82F9B625FCDFE300CE0129 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F9B525FCDFE300CE0129 /* CheckBoxView.swift */; };
 		FE97B628261E5B5400502BF2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97B627261E5B5400502BF2 /* RootView.swift */; };
+		FE97B63126246F5F00502BF2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97B63026246F5F00502BF2 /* Settings.swift */; };
+		FE97B636262C95CF00502BF2 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE97B635262C95CF00502BF2 /* Menu.swift */; };
 		FEE76DE02610AA5F0022A50D /* ClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE76DDF2610AA5F0022A50D /* ClearView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		FE82F9B025F973B300CE0129 /* CellAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAssetView.swift; sourceTree = "<group>"; };
 		FE82F9B525FCDFE300CE0129 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		FE97B627261E5B5400502BF2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		FE97B63026246F5F00502BF2 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FE97B635262C95CF00502BF2 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		FEE76DDF2610AA5F0022A50D /* ClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,7 @@
 				FE97B627261E5B5400502BF2 /* RootView.swift */,
 				FE53A5D5260264720031BDAF /* AlbumList */,
 				FEE76DDE2610AA240022A50D /* ClearView */,
+				FE97B62F26246F3700502BF2 /* Settings */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -200,6 +205,15 @@
 				FE82F98925EED46200CE0129 /* Info.plist */,
 			);
 			path = CleanMyPhotoUITests;
+			sourceTree = "<group>";
+		};
+		FE97B62F26246F3700502BF2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FE97B63026246F5F00502BF2 /* Settings.swift */,
+				FE97B635262C95CF00502BF2 /* Menu.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		FEE76DDE2610AA240022A50D /* ClearView */ = {
@@ -345,9 +359,11 @@
 				FE82F9B125F973B300CE0129 /* CellAssetView.swift in Sources */,
 				FE97B628261E5B5400502BF2 /* RootView.swift in Sources */,
 				FE82F9A725F954FA00CE0129 /* AlbumData.swift in Sources */,
+				FE97B636262C95CF00502BF2 /* Menu.swift in Sources */,
 				FE82F9AC25F96F6100CE0129 /* Helpers.swift in Sources */,
 				FEE76DE02610AA5F0022A50D /* ClearView.swift in Sources */,
 				FE82F96D25EED45F00CE0129 /* AlbumList.swift in Sources */,
+				FE97B63126246F5F00502BF2 /* Settings.swift in Sources */,
 				FE82F96B25EED45F00CE0129 /* CleanMyPhotoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
