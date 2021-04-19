@@ -17,48 +17,10 @@ struct Menu: View {
 		GeometryReader{ geometry in
 
 			ZStack(alignment: .topLeading) {
-				RoundedRectangle(cornerRadius: 5, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+				RoundedRectangle(cornerRadius: 5, style: .continuous)
 					.foregroundColor(Color.ui.backgound)
 					.shadow(color: Color.ui.accent.opacity(0.3), radius: 2)
 				VStack(alignment: .leading, spacing: 5) {
-					HStack {
-						Spacer()
-						Text("Sorting")
-							.font(.system(size: fontSize + 1, weight: Font.Weight.light, design: Font.Design.rounded))
-					}
-					Divider()
-					HStack {
-						Text("ascendind")
-							.font(.system(size: fontSize, weight: Font.Weight.thin, design: Font.Design.rounded))
-							.onTapGesture {
-								if album.sortDesc {
-									album.sortDesc = false
-								}
-							}
-						Spacer()
-						if !album.sortDesc {
-							Image(systemName: "checkmark")
-								.foregroundColor(Color.ui.accent)
-								.font(.system(size: fontSize - 2))
-						}
-					}
-					HStack {
-						Text("descending")
-							.font(.system(size: fontSize, weight: Font.Weight.thin, design: Font.Design.rounded))
-							.onTapGesture {
-								if !album.sortDesc {
-									album.sortDesc = true
-								}
-							}
-						Spacer()
-						if album.sortDesc {
-							Image(systemName: "checkmark")
-								.foregroundColor(Color.ui.accent)
-								.font(.system(size: fontSize - 2))
-						}
-
-					}
-					Spacer()
 					HStack {
 						Spacer()
 						Text("Sections")
@@ -96,6 +58,45 @@ struct Menu: View {
 						}
 
 					}
+					Spacer()
+					HStack {
+						Spacer()
+						Text("Sorting")
+							.font(.system(size: fontSize + 1, weight: Font.Weight.light, design: Font.Design.rounded))
+					}
+					Divider()
+					HStack {
+						Text("ascendind")
+							.font(.system(size: fontSize, weight: Font.Weight.thin, design: Font.Design.rounded))
+							.onTapGesture {
+								if album.sortDesc {
+									album.sortDesc = false
+								}
+							}
+						Spacer()
+						if !album.sortDesc {
+							Image(systemName: "checkmark")
+								.foregroundColor(Color.ui.accent)
+								.font(.system(size: fontSize - 2))
+						}
+					}
+					HStack {
+						Text("descending")
+							.font(.system(size: fontSize, weight: Font.Weight.thin, design: Font.Design.rounded))
+							.onTapGesture {
+								if !album.sortDesc {
+									album.sortDesc = true
+								}
+							}
+						Spacer()
+						if album.sortDesc {
+							Image(systemName: "checkmark")
+								.foregroundColor(Color.ui.accent)
+								.font(.system(size: fontSize - 2))
+						}
+
+					}
+
 				}
 				.padding()
 
