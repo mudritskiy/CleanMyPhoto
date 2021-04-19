@@ -19,9 +19,6 @@ struct RootView: View {
             ClearView()
                 .tabItem { Label("Clear", systemImage: "trash") }
                 .tag(2)
-            Settings()
-            .tabItem { Label("Mode", systemImage: "gearshape") }
-            .tag(3)
         }
         .accentColor(Color.ui.accent)
     }

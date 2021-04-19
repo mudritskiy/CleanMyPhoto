@@ -17,6 +17,13 @@ struct AlbumList: View {
 
 	var body: some View {
 
+		let showMenuTapWithCondition = TapGesture()
+			.onEnded { _ in
+				if showMenu {
+					showMenu = !showMenu
+				}
+			}
+
 		ZStack(alignment: Alignment.center) {
 			Color.ui.backgound.ignoresSafeArea(.all)
 			ScrollView {
@@ -32,30 +39,21 @@ struct AlbumList: View {
 			.padding(.horizontal, 10)
 			.blur(radius: album.zoomedAsset == nil ? 0 : 2)
 			.animation(.spring())
+			.contentShape(Rectangle())
+			.gesture(showMenuTapWithCondition)
 
-			HStack {
-				Spacer()
-				ZStack {
-					Circle()
-						.trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: 01)
-						.stroke(style: StrokeStyle(lineWidth: 1))
-						.frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-						.foregroundColor(.white)
-					Image(systemName: "chevron.down.circle")
-						.foregroundColor(Color.ui.accent.opacity(0.5))
-						.font(.system(size: 15))
-						.rotationEffect(showMenu ? .init(degrees: 180) : .zero)
-				}
-				.offset(x: -5, y: 28)
-				.onTapGesture {
-					withAnimation(.spring()) {
-						self.showMenu = !self.showMenu
+			GeometryReader { geometry in
+				HStack {
+					Spacer()
+					ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+						Menu()
+							.scaleEffect(showMenu ? 1 : 0, anchor: .topTrailing)
+							.offset(x: -25, y: 25)
+						settingsButton
 					}
 				}
 			}
-			Menu()
-				.scaleEffect(showMenu ? 1 : 0, anchor: .topTrailing)
-
+			.animation(.spring())
 
 			if album.zoomedAsset != nil {
 				ZStack {
@@ -67,9 +65,29 @@ struct AlbumList: View {
 		}
 	}
 
-}
 
-extension AlbumList {
+	var settingsButton: some View {
+
+		ZStack {
+
+			let showMenuTap = TapGesture()
+				.onEnded { _ in
+					showMenu = !showMenu
+				}
+
+			Group {
+				Circle()
+					.trim(from: 0.0, to: 1)
+					//				.stroke(style: StrokeStyle(lineWidth: 1))
+					.frame(width: 40, height: 40, alignment: .center)
+					.foregroundColor(.white)
+				Image(systemName: "plus.circle")
+					.foregroundColor(Color.ui.accent.opacity(0.8))
+					.font(.system(size: 40))
+					.rotationEffect(.init(degrees: showMenu ? 135 : 0))
+			}				.gesture(showMenuTap)
+		}
+	}
 
 	var bigImage: some View {
 

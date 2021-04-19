@@ -54,7 +54,7 @@ struct SectionView: View {
                 Spacer()
                 ZStack {
                     Circle()
-                        .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: 01)
+                        .trim(from: 0.0, to: 1)
                         .stroke(style: StrokeStyle(lineWidth: 1))
                         .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         .foregroundColor(.white)
@@ -72,7 +72,8 @@ struct SectionView: View {
             }
 
         }
-    }
+		.contentShape(Rectangle())
+	}
 
     private func rangeChecked(sectionRange: [UUID], checkedRange: Set<UUID>) -> Bool {
         let range = sectionRange.reduce(into: Set<UUID>(), { (result, object) in
