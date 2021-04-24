@@ -12,14 +12,14 @@ struct RootView: View {
 	@State var selectedView: Int = 1
 
     var body: some View {
-        TabView(selection: $selectedView) {
+//        TabView(selection: $selectedView) {
             AlbumList()
-                .tabItem { Label("Selection", systemImage: "square.grid.2x2") }
-                .tag(1)
-            ClearView()
-                .tabItem { Label("Clear", systemImage: "trash") }
-                .tag(2)
-        }
+//                .tabItem { Label("Selection", systemImage: "square.grid.2x2") }
+//                .tag(1)
+//            ClearView()
+//                .tabItem { Label("Clear", systemImage: "trash") }
+//                .tag(2)
+//        }
         .accentColor(Color.ui.accent)
     }
 }
