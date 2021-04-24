@@ -11,12 +11,19 @@ struct ClearView: View {
 
 	@EnvironmentObject var album: AlbumData
 	@State var zeroState: CGFloat = 0
+	@Binding var showSummary: Bool
 
 	var body: some View {
 
 		ZStack {
+			Color.ui.backgound
 			VStack {
 				header
+					.onTapGesture {
+						withAnimation(Animation.easeIn(duration: 2).delay(2)) {
+							showSummary = false
+					}
+					}
 				Spacer()
 
 			}
@@ -78,6 +85,7 @@ extension ClearView {
 	}
 }
 extension ClearView {
+
 	func summaryView(name: String, percentage: CGFloat, count: String, total: String, of totalType: String = "") -> some View {
 
 		var body: some View {
@@ -130,12 +138,12 @@ extension ClearView {
 			}
 			.padding(.horizontal, 20)
 			.padding(.vertical, 10)
-			.onAppear() {
-				zeroState = 1
-			}
-			.onDisappear() {
-				zeroState = 0
-			}
+//			.onAppear() {
+//				zeroState = 1
+//			}
+//			.onDisappear() {
+//				zeroState = 0
+//			}
 		}
 
 		return body
@@ -158,9 +166,9 @@ struct headerShape: Shape {
 }
 
 
-struct ClearView_Previews: PreviewProvider {
-	static var previews: some View {
-		ClearView()
-			.environmentObject(AlbumData())
-	}
-}
+//struct ClearView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		ClearView(, showSummary: <#Binding<Bool>#>)
+//			.environmentObject(AlbumData())
+//	}
+//}

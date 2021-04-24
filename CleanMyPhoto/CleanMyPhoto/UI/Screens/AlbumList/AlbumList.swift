@@ -13,7 +13,8 @@ struct AlbumList: View {
 	@EnvironmentObject var album: AlbumData
 	@State var scaleGrade: CGFloat = 0.33
 	@State private var Sorting: Int = 0
-	@State var showMenu: Bool = false
+	@State private var showMenu: Bool = false
+	@State private var showSummary: Bool = false
 
 	var body: some View {
 
@@ -26,6 +27,7 @@ struct AlbumList: View {
 
 		ZStack(alignment: Alignment.center) {
 			Color.ui.backgound.ignoresSafeArea(.all)
+
 			ScrollView {
 				LazyVStack(alignment: .leading, spacing: 15) {
 					ForEach(album.sections, id: \.id) { section in
@@ -39,8 +41,6 @@ struct AlbumList: View {
 			.padding(.horizontal, 10)
 			.blur(radius: album.zoomedAsset == nil ? 0 : 2)
 			.animation(.spring())
-			.contentShape(Rectangle())
-			.gesture(showMenuTapWithCondition)
 
 			GeometryReader { geometry in
 				HStack {
@@ -55,26 +55,58 @@ struct AlbumList: View {
 			}
 			.animation(.spring())
 
+			GeometryReader { geometry in
+				VStack {
+					Spacer()
+
+					HStack(alignment: .center, spacing: nil) {
+						Spacer()
+						Button(action: {
+							withAnimation(Animation.easeIn(duration: 2).delay(2)) {
+								showSummary = true }
+						}, label: {
+							Text("Clear")
+								.font(.system(size: 25, weight: Font.Weight.medium, design: Font.Design.rounded))
+						})
+						.padding(.vertical, 5)
+						.padding(.horizontal, 10)
+						.background(Color.ui.tint)
+						.cornerRadius(25)
+						.shadow(color: Color.ui.accent.opacity(0.5), radius: 2, x: 1, y: 1)
+						.offset(y: -10)
+//						.animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/)
+//						.popover(isPresented: $showSummary) {
+//							ClearView()
+//						}
+						Spacer()
+					}
+				}
+			}
+
+//			if showSummary {
+//				ClearView( showSummary: $showSummary)
+//					.transition(.asymmetric(insertion: .move(edge: .top), removal: .move(edge: .top)))
+//			}
+
 			if album.zoomedAsset != nil {
 				ZStack {
 					Color.black.opacity(0.05).ignoresSafeArea(.all)
 					bigImage
-
 				}
 			}
 		}
+		.contentShape(Rectangle())
+		.gesture(showMenuTapWithCondition)
+		.navigate(to: ClearView( showSummary: $showSummary), when: $showSummary)
 	}
 
 
 	var settingsButton: some View {
-
 		ZStack {
-
 			let showMenuTap = TapGesture()
 				.onEnded { _ in
 					showMenu = !showMenu
 				}
-
 			Group {
 				Circle()
 					.trim(from: 0.0, to: 1)
@@ -85,7 +117,9 @@ struct AlbumList: View {
 					.foregroundColor(Color.ui.accent.opacity(0.8))
 					.font(.system(size: 40))
 					.rotationEffect(.init(degrees: showMenu ? 135 : 0))
-			}				.gesture(showMenuTap)
+			}
+			.contentShape(Rectangle())
+			.gesture(showMenuTap)
 		}
 	}
 
