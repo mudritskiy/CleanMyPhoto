@@ -10,7 +10,8 @@ import SwiftUI
 struct Menu: View {
 
 	@EnvironmentObject var album: AlbumData
-	@State var fontSize: CGFloat = 22
+	@State private var fontSize: CGFloat = 24
+	@State private var checkmarkSize: CGFloat = 18
 
 	var body: some View {
 
@@ -40,7 +41,7 @@ struct Menu: View {
 			HStack {
 				Spacer()
 				Text(name)
-					.font(.system(size: fontSize + 1, weight: Font.Weight.light, design: Font.Design.rounded))
+					.font(.system(size: fontSize, weight: Font.Weight.light, design: Font.Design.rounded))
 			}
 			Divider()
 			ForEach(options, id: \.self) { option in
@@ -51,7 +52,7 @@ struct Menu: View {
 					if showCheckmark(option.value) {
 						Image(systemName: "checkmark")
 							.foregroundColor(Color.ui.accent)
-							.font(.system(size: fontSize - 4))
+							.font(.system(size: checkmarkSize))
 					}
 				}
 				.contentShape(Rectangle())

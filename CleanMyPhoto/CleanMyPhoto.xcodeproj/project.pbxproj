@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FE53A5C725FE15950031BDAF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53A5C625FE15950031BDAF /* SectionView.swift */; };
+		FE751B222639CBEE008BEAF3 /* PHAsset+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE751B212639CBEE008BEAF3 /* PHAsset+.swift */; };
+		FE751B272639CC4E008BEAF3 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE751B262639CC4E008BEAF3 /* View+.swift */; };
 		FE82F96B25EED45F00CE0129 /* CleanMyPhotoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */; };
 		FE82F96D25EED45F00CE0129 /* AlbumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE82F96C25EED45F00CE0129 /* AlbumList.swift */; };
 		FE82F96F25EED46200CE0129 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE82F96E25EED46200CE0129 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		FE53A5C625FE15950031BDAF /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
+		FE751B212639CBEE008BEAF3 /* PHAsset+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+.swift"; sourceTree = "<group>"; };
+		FE751B262639CC4E008BEAF3 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		FE82F96725EED45F00CE0129 /* CleanMyPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanMyPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE82F96A25EED45F00CE0129 /* CleanMyPhotoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanMyPhotoApp.swift; sourceTree = "<group>"; };
 		FE82F96C25EED45F00CE0129 /* AlbumList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumList.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				FE82F9AB25F96F6100CE0129 /* Helpers.swift */,
+				FE751B212639CBEE008BEAF3 /* PHAsset+.swift */,
+				FE751B262639CC4E008BEAF3 /* View+.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -357,8 +363,10 @@
 				FE82F9B625FCDFE300CE0129 /* CheckBoxView.swift in Sources */,
 				FE82F99925F15E7B00CE0129 /* ImagePicker.swift in Sources */,
 				FE82F9B125F973B300CE0129 /* CellAssetView.swift in Sources */,
+				FE751B272639CC4E008BEAF3 /* View+.swift in Sources */,
 				FE97B628261E5B5400502BF2 /* RootView.swift in Sources */,
 				FE82F9A725F954FA00CE0129 /* AlbumData.swift in Sources */,
+				FE751B222639CBEE008BEAF3 /* PHAsset+.swift in Sources */,
 				FE97B636262C95CF00502BF2 /* Menu.swift in Sources */,
 				FE82F9AC25F96F6100CE0129 /* Helpers.swift in Sources */,
 				FEE76DE02610AA5F0022A50D /* ClearView.swift in Sources */,
