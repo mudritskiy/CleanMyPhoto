@@ -29,7 +29,7 @@ struct CellAssetView: View {
                     .offset(x: 0, y: -10)
             }
             HStack {
-				Text("\(assetWithData.asset.fileSize.readableSize.capitalized)")
+				Text("\(assetWithData.size.readableSize.capitalized)")
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundColor(Color.ui.accent)
                     .offset(x: 5, y: -5)
@@ -56,15 +56,15 @@ extension CellAssetView {
 				.scaledToFill()
 				.frame(width: gr.size.width, height: gr.size.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .clipShape(RoundedRectangle(cornerRadius: showingPopover ? 50 : 25))
-                .gesture(
-                    LongPressGesture(minimumDuration: 0.5)
-                        .updating($isDetectingPress) { currentState, gestureState, transaction in
-                            gestureState = currentState
-                        }
-                        .onEnded { value in
-                            self.album.zoomedAsset = assetWithData.id
-                        }
-                )
+//                .gesture(
+//                    LongPressGesture(minimumDuration: 0.5)
+//                        .updating($isDetectingPress) { currentState, gestureState, transaction in
+//                            gestureState = currentState
+//                        }
+//                        .onEnded { value in
+//                            self.album.zoomedAsset = assetWithData.id
+//                        }
+//                )
         }
         .scaledToFit()
     }

@@ -47,9 +47,10 @@ class AlbumData: ObservableObject {
             let fetchResult: PHFetchResult<PHAsset> = PHAsset.fetchAssets(in: album, options: options)
 
             if fetchResult.count > 0 {
+				let group = DispatchGroup()
                 fetchResult.enumerateObjects {
                     asset, _, _ in
-                    let element = AssetWithData(asset)
+                   let element = AssetWithData(asset)
                     result.append(element)
                 }
                 
@@ -59,7 +60,25 @@ class AlbumData: ObservableObject {
         return result
     }
     
-    private func fetchSections(for assets: [AssetWithData], by option: SectionType) -> [AlbumSection] {
+	func getURL(ofPhotoWith mPhasset: PHAsset, completionHandler : @escaping ((_ responseURL : FileSizeDimension) -> Void)) {
+		let options: PHContentEditingInputRequestOptions = PHContentEditingInputRequestOptions()
+		//		options.canHandleAdjustmentData = {(adjustmeta: PHAdjustmentData) -> Bool in
+		//			return true
+		//		}
+		mPhasset.requestContentEditingInput(with: options, completionHandler: { (contentEditingInput, info) in
+			var fileSize: FileSizeDimension = 0
+			do {
+				let fileSize1 = try contentEditingInput?.fullSizeImageURL?.resourceValues(forKeys: [URLResourceKey.fileSizeKey]).fileSize
+				fileSize = FileSizeDimension(fileSize1!)
+				//				print("file size: \(String(describing: fileSize))")
+			} catch let error {
+				fatalError("error: \(error)")
+			}
+			completionHandler(fileSize)
+		})
+	}
+
+	private func fetchSections(for assets: [AssetWithData], by option: SectionType) -> [AlbumSection] {
         
         var sections: [AlbumSection] = []
         let formatterDate = DateFormatter()
@@ -74,14 +93,15 @@ class AlbumData: ObservableObject {
                 .map { $0.creationDare.removeTimeStamp() }
                 .unique()
             sectionsRaw.forEach { sectionDate in
-                let assetsRange = assets
-                    .filter { $0.creationDare.removeTimeStamp() == sectionDate }
+				let assetsRangeFull = assets
+					.filter { $0.creationDare == sectionDate }
+                let assetsRange = assetsRangeFull
                     .map { $0.id }
-                let videos = assets
-                    .filter { assetsRange.contains($0.id) && $0.asset.mediaType == .video }
+                let videos = assetsRangeFull
+                    .filter { $0.asset.mediaType == .video }
                     .count
-                let photos = assets
-                    .filter { assetsRange.contains($0.id) && $0.asset.mediaType == .image }
+                let photos = assetsRangeFull
+                    .filter { $0.asset.mediaType == .image }
                     .count
 				let albumSection = AlbumSection(
 					name: formatterDate.string(from: sectionDate),
@@ -147,6 +167,34 @@ class AlbumData: ObservableObject {
         guard let firstAsset = assets.filter({ $0.id == id }).first?.asset else { return PHAsset() }
         return firstAsset
     }
+
+//	func fillSize( list: inout [AssetWithData]) {
+//		let group = DispatchGroup()
+//		for element in self.assets {
+//			group.enter()
+//			getSize(ofPhotoWith: element.asset, completionHandler: { (size) in
+////				if let size = size {
+//					element.size = size
+////				}
+//				group.leave()
+//			})
+//		}
+//	}
+//
+//	func getSize(ofPhotoWith mPhasset: PHAsset, completionHandler : @escaping ((_ size : FileSizeDimension) -> Void)) {
+//		let options: PHContentEditingInputRequestOptions = PHContentEditingInputRequestOptions()
+//		mPhasset.requestContentEditingInput(with: options, completionHandler: { (contentEditingInput, info) in
+//			var fileSize: FileSizeDimension = 0
+//			do {
+//				let fileSize1 = try contentEditingInput?.fullSizeImageURL?.resourceValues(forKeys: [URLResourceKey.fileSizeKey]).fileSize
+//				fileSize = FileSizeDimension(fileSize1!)
+//			} catch let error {
+//				fatalError("error: \(error)")
+//			}
+//			completionHandler(fileSize)
+//		})
+//	}
+
 }
 
 extension AlbumData {
@@ -181,11 +229,11 @@ struct AssetWithData: Identifiable {
     let size: FileSizeDimension
     let duration: TimeInterval
 
-    init(_ asset: PHAsset) {
+	init(_ asset: PHAsset) {
         self.asset = asset
-        self.creationDare = asset.creationDate ?? Date()
+		self.creationDare = (asset.creationDate ?? Date()).removeTimeStamp()
         self.size = asset.fileSize
-        self.duration = asset.duration
+		self.duration = asset.duration
     }
 }
 

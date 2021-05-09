@@ -74,7 +74,7 @@ struct AlbumList: View {
 						.cornerRadius(25)
 						.shadow(color: Color.ui.accent.opacity(0.5), radius: 2, x: 1, y: 1)
 						.offset(y: -10)
-//						.animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/)
+//						.animation(.easeIn)
 //						.popover(isPresented: $showSummary) {
 //							ClearView()
 //						}
@@ -150,8 +150,8 @@ struct AlbumList: View {
 	}
 }
 
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		AlbumList()
-	}
-}
+//struct ContentView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		AlbumList()
+//	}
+//}
